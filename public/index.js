@@ -2,6 +2,8 @@ const container = document.querySelector(".game");
 const resolucion = document.querySelector(".resolucion");
 const button = document.getElementById("play");
 var desitionB = false;
+const https = "https://staym4.onrender.com";
+// http://localhost:7535
 
 
 
@@ -44,13 +46,18 @@ let publicacion = 0;
 let cargado = 0;
 
 
+// http://localhost:7535/data/local
+// https://staym4.onrender.com
+
 
 const decidido = async camino =>{
 
 
 	if(camino == 0){
 
-	fetch('http://localhost:7535/data/local',{
+
+
+	fetch(`${https}/data/local`,{
 		method: "POST",
 		headers: {
 		'Content-Type': 'application/json'
@@ -63,7 +70,7 @@ const decidido = async camino =>{
 
 	if(camino == 1){
 
-	fetch('http://localhost:7535/data/local',{
+	fetch(`${https}/data/local`,{
 		method: "POST",
 		headers: {
 		'Content-Type': 'application/json'
@@ -76,7 +83,7 @@ const decidido = async camino =>{
 
 	if(camino == 2){
 
-	fetch('http://localhost:7535/data/local',{
+	fetch(`${https}/data/local`,{
 		method: "POST",
 		headers: {
 		'Content-Type': 'application/json'
@@ -104,7 +111,7 @@ const observar = async entry =>{
 
 		// console.log("envio")
 
-		let peticion = await fetch("http://localhost:7535/data");
+		let peticion = await fetch(`${https}/data`);
 		let res = await peticion.json();
 
 		let res2 = JSON.parse(res);
@@ -112,7 +119,7 @@ const observar = async entry =>{
 		// console.log(res2);
 
 		if(res2.model == "p"){
-			fetch("http://localhost:7535/data/local");
+			fetch(`${https}/data/local`);
 			look();
 			return;
 		}
@@ -210,7 +217,7 @@ function look(d){
 function PLAY(){
 
 	// let comenzar = fetch("http://localhost:7535/play");
-	fetch("http://localhost:7535/play")
+	fetch(`${https}/play`)
 	apiObservar.observe(document.body);
 
 }
